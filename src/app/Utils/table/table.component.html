@@ -1,0 +1,80 @@
+<input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
+
+<table class="table table-hover" dir="rtl">
+    <thead>
+      <tr>
+        <th scope="col">#</th>                
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('idnumber')">
+            תעודת זהות
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+
+        </th>
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('firstname')">
+           שם פרטי
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </th>
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('lastname')">
+          שם משפחה
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </th>
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('birthdate')">
+          תאריך לידה
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </th>
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('countryoforigin')">
+         ארץ לידה
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </th>
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('gender')">
+        מגדר
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </th>
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('class')">
+        כיתה
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </th>
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('studentstatus')">
+        סטטוס תלמיד
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </th>
+        <th scope="col">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('studenttype')">
+        סוג תלמיד
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let student of this.StudensList | slice: FromIndex() : ToIndex(), let i=index ">
+        <th scope="row">{{i}}</th>
+        <td>{{student.idnumber}}</td>
+        <td>{{student.firstname}}</td>
+        <td>{{student.lastname}}</td>
+        <td>{{student.birthdate}}</td>
+        <td>{{student.countryoforigin}}</td>
+        <td>{{student.gender}}</td>
+        <td>{{student.studentclass}}</td>
+        <td>{{student.studentstatus}}</td>
+        <td>{{student.studenttype}}</td>
+      </tr>     
+    </tbody>
+  </table>
+
+  <stg-paginator [NumOfItems]="this.StudensList.length"  [GetCurrentPage]="CurrentPage" (GetCurrentPageChange)="OnCurrentPageChange($event)" ></stg-paginator>
