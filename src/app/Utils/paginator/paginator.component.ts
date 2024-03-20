@@ -51,8 +51,7 @@ export class PaginatorComponent{
       }   
     }
 
-    this.ReloadNumbersRange();   
-    console.log('paginator:OnGetCurrentPageChange:ngOnChanges')
+    this.ReloadNumbersRange();       
     this.GetCurrentPageChange.emit(page);
   }
 
@@ -62,18 +61,14 @@ export class PaginatorComponent{
       const cur  = JSON.stringify(chng.currentValue);
       const prev = JSON.stringify(chng.previousValue);
       if(propName === 'GetCurrentPage' && chng.currentValue !=  chng.previousValue)
-      {
-        console.log('paginator:ngOnChanges')
+      {        
         this.OnGetCurrentPageChange(chng.currentValue);
-      }      
-     //console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+      }           
       if(propName === 'NumOfItems' && chng.currentValue !=  chng.previousValue){         
           this.GetCurrentPage = 1;
           this.fromRange = 1;
-          this.toRange = Math.min(this.NumOfPages,this.maxPagesInRange);
-          //console.log('this.NumOfPages aftre:' + this.NumOfPages)
-          this.ReloadNumbersRange();    
-          //this.GetCurrentPageChange.emit(1);     
+          this.toRange = Math.min(this.NumOfPages,this.maxPagesInRange);        
+          this.ReloadNumbersRange();              
       }
     }
   }

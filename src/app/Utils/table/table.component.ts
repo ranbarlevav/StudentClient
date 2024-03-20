@@ -24,12 +24,10 @@ export class TableComponent  implements OnInit {
   }
   
   FromIndex(): number{
-    console.log((this.CurrentPage - 1)  * this.ItemsPerPage);
     return (this.CurrentPage - 1)  * this.ItemsPerPage;
   }
 
   ToIndex(): number{
-    console.log(this.FromIndex() + this.ItemsPerPage);
     return this.FromIndex() + this.ItemsPerPage ;
   }
 
@@ -43,23 +41,20 @@ export class TableComponent  implements OnInit {
   
   OnCurrentPageChange(page){
     this.CurrentPage = page;
-    console.log("table:" +  page);
   }
 
   ngOnChanges(changes: SimpleChange) {
     for (const propName in changes) {
       const chng = changes[propName];
       const cur  = JSON.stringify(chng.currentValue);
-      const prev = JSON.stringify(chng.previousValue);     
-     console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);     
+      const prev = JSON.stringify(chng.previousValue);          
     }
   }
 
   OnSortClick(propName: any){
 
     if(propName === propName){    
-      if(this.SortDirection.includes(propName)){
-        //this.StudensList.sort((a,b) => b.firstname.localeCompare(a.firstname));   
+      if(this.SortDirection.includes(propName)){       
         this.StudensList.sort((a,b) => this.getValue(b,propName).localeCompare(this.getValue(a,propName)));
         this.SortDirection = "";
       }

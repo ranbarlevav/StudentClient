@@ -1,4 +1,10 @@
-<input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
+
+<div class="input-group mb-3" dir="rtl">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">חפש לפי שם פרטי</span>
+  </div>
+  <input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
+</div>
 
 <table class="table table-hover" dir="rtl">
     <thead>
@@ -42,7 +48,7 @@
           </a>
         </th>
         <th scope="col">
-          <a class="icon-link icon-link-hover" (click)="OnSortClick('class')">
+          <a class="icon-link icon-link-hover" (click)="OnSortClick('studentclass')">
         כיתה
             <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
           </a>
