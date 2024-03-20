@@ -21,11 +21,18 @@ export class AppComponent {
 
 
   ngOnInit(){    
-    this.studentSvc.getStudents().subscribe(response =>       
-      {       
-        this.studentsArr = response.data;            
-      
-    })
+
+    this.studentSvc.getStudents().subscribe({
+      next: value => {
+        if(value.success)
+          this.studentsArr = value.data;
+        else
+         console.error('getStudents emitted an error: ' + value.errormessage)
+      },
+      error: err => console.error('getStudents emitted an error: ' + err),
+      complete: () => console.log('getStudents service end')
+    });
+
   }
 
   public onLast(event): void{
