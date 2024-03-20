@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, SimpleChange, input } from '@angular/core';
-import { IStudent } from '../../students.model';
+import { IStudent } from '../../models/students.model';
 
 @Component({
   selector: 'stg-table',

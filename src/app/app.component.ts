@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IStudent } from './students.model';
+import { IStudent } from './models/students.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { StudentsService } from './students.service';
 import { MatPaginator , MatPaginatorIntl} from '@angular/material/paginator';
@@ -21,12 +21,9 @@ export class AppComponent {
 
 
   ngOnInit(){    
-    this.studentSvc.getStudents().subscribe(response => {
-        this.studentsArr = response;     
-        // this.dataSource.filterPredicate = function(data: IStudent, filter: string): boolean {
-        //   return data.firstname.toLowerCase().includes(filter);// || data.symbol.toLowerCase().includes(filter) || data.position.toString().includes(filter);
-        
-     // };  
+    this.studentSvc.getStudents().subscribe(response =>       
+      {       
+        this.studentsArr = response.data;            
       
     })
   }
